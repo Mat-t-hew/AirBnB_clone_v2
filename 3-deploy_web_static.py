@@ -9,13 +9,13 @@ env.hosts = ['52.91.153.57', '34.227.101.246']
 
 
 def do_pack():
-    """Gerenate tgz."""
+    """Generate tgz."""
     timestamp = time.strftime("%Y%m%d%H%M%S")
     try:
-        local("mkdir -p versions")
-        local("tar -cvzf versions/web_static_{:s}.tgz web_static/".
-              format(timestamp))
-        return ("versions/web_static_{:s}.tgz".format(timestamp))
+        local("mkdir -p versions/web_static")
+        local("echo '<html><head></head><body>My Index</body></html>' > versions/web_static/my_index.html")
+        local("tar -cvzf versions/web_static_{:s}.tgz -C versions web_static/".format(timestamp))
+        return "versions/web_static_{:s}.tgz".format(timestamp)
     except:
         return None
 
