@@ -14,3 +14,4 @@ def do_pack():
         return ("versions/web_static_{:s}.tgz".format(timestamp))
     except:
         return None
+        
