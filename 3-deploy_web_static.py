@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+ #!/usr/bin/python3
 """Distributes an archive to your web servers, using the function do_deploy"""
-from fabric.contrib import files
 from fabric.api import env, put, run, local
 import time
 import os
