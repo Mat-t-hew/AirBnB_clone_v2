@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Distributes an archive to your web servers, using the function do_deploy"""
-from fabric.contrib import files
 from fabric.api import env, put, run
 import os
 
@@ -27,6 +26,6 @@ def do_deploy(archive_path):
         run('sudo rm -rf /data/web_static/current')
         run('sudo ln -s {} /data/web_static/current'.format(dest))
         return True
-    except:
+    except Exception as e:
+        print(e)
         return False
-    
