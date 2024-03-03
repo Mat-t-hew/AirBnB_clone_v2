@@ -2,7 +2,7 @@
 """Distributes an archive to your web servers, using the function do_deploy."""
 import os
 import time
-from fabric.api import env, put, run, local
+from fabric.api import *
 
 # Define remote hosts
 env.hosts = ['52.91.153.57', '34.227.101.246']
