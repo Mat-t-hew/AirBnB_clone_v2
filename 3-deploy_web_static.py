@@ -1,11 +1,10 @@
- #!/usr/bin/python3
+#!/usr/bin/python3
 """Distributes an archive to your web servers, using the function do_deploy"""
 from fabric.api import env, put, run, local
 import time
 import os
 
 env.hosts = ['52.91.153.57', '34.227.101.246']
-
 
 def do_pack():
     """Generate tgz."""
@@ -17,7 +16,6 @@ def do_pack():
         return "versions/web_static_{:s}.tgz".format(timestamp)
     except:
         return None
-
 
 def do_deploy(archive_path):
     """Function for deploy."""
@@ -42,15 +40,11 @@ def do_deploy(archive_path):
     except:
         return False
 
-
-def deploy():
-    """Compress and upload files to remote server."""
+if __name__ == "__main__":
     path = do_pack()
-    print(path)
     if path is None:
-        return False
-
-    return do_deploy(path)
-
-
-deploy()
+        print("Packaging failed. Aborting deployment.")
+    elif not do_deploy(path):
+        print("Deployment failed.")
+    else:
+        print("Deployment successful.")
